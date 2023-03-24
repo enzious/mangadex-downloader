@@ -418,14 +418,18 @@ class EPUBFile:
 
 class Epub(ConvertedChaptersFormat, EPUBFile):
     def download_chapters(self, worker, chapters):
+        from ..config import config
+
         manga = self.manga
 
         # Begin downloading
         for chap_class, images in chapters:
             chap_name = chap_class.get_simplified_name()
 
+            filename = config.format_filename if config.format_filename else chap_name
+            chapter_epub_path = self.path / (filename + self.file_ext)
+
             # Check if .epub file is exist or not
-            chapter_epub_path = self.path / (chap_name + self.file_ext)
             if chapter_epub_path.exists():
 
                 if self.replace:
@@ -510,6 +514,7 @@ class EpubSingle(ConvertedSingleFormat, EPUBFile):
         epub_chapters = []
         manga = self.manga
         count = NumberWithLeadingZeros(total)
+
         manga_epub_path = self.path / (merged_name + self.file_ext)
 
         # Check if exist or not

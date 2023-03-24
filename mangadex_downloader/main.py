@@ -81,7 +81,7 @@ def download(
         manga.fetch_chapters(lang.value, all_chapters=True)
 
     # Create folder for downloading
-    base_path = create_directory(manga.title, config.path)
+    base_path = create_directory(manga.title, config.path, not config.no_manga_folder)
 
     # Cover path
     cover_path = base_path / 'cover.jpg'
@@ -183,7 +183,7 @@ def download_chapter(
     log.info(f'Found chapter {chap.chapter} from manga "{manga.title}"')
 
     # Create folder for downloading
-    base_path = create_directory(manga.title, config.path)
+    base_path = create_directory(manga.title, config.path, not config.no_manga_folder)
     log.info(f'Download directory is set to "{base_path.resolve()}"')
 
     kwargs_iter_chapter_images = {

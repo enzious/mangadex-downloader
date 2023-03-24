@@ -124,6 +124,18 @@ Same as `--cover` or `-c`
 Same as `--save-as` or `-f`
 ```
 
+```{option} format_filename
+Same as `--format-filename` or `-fn`
+```
+
+```{option} no_manga_folder [1 or 0, true or false]
+Same as `--no-manga-folder` or `-nmf`
+```
+
+```{option} no_chapter_folder [1 or 0, true or false]
+Same as `--no-chapter-folder` or `-ncf`
+```
+
 ```{option} use_chapter_title [1 or 0, true or false]
 Same as `--use-chapter-title` or `-uct`
 ```

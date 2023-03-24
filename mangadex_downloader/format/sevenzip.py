@@ -110,12 +110,16 @@ class SevenZipFile:
 
 class SevenZip(ConvertedChaptersFormat, SevenZipFile):
     def download_chapters(self, worker, chapters):
+        from ..config import config
+
         # Begin downloading
         for chap_class, chap_images in chapters:
             count = NumberWithLeadingZeros(0)
             chap_name = chap_class.get_simplified_name()
 
-            chapter_zip_path = self.path / (chap_name + self.file_ext)
+            filename = config.format_filename if config.format_filename else chap_name
+            chapter_zip_path = self.path / (filename + self.file_ext)
+
             if chapter_zip_path.exists():
                 if self.replace:
                     delete_file(chapter_zip_path)

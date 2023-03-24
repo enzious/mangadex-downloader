@@ -245,7 +245,7 @@ class RawSingle(BaseFormat):
 
         count = NumberWithLeadingZeros(total)
 
-        path = create_directory(name, base_path)
+        path = create_directory(name, base_path, not config.no_manga_folder)
         file_info = self.get_fi_volume_or_single_fmt(name)
         new_chapters = self.get_new_chapters(file_info, cache, name)
 

@@ -414,12 +414,16 @@ class PDFFile:
 
 class PDF(ConvertedChaptersFormat, PDFFile):
     def download_chapters(self, worker, chapters):
+        from ..config import config
+
         # Begin downloading
         for chap_class, chap_images in chapters:
             chap_name = chap_class.get_simplified_name()
             count = NumberWithLeadingZeros(0)
 
-            pdf_file = self.path / (chap_name + self.file_ext)
+            filename = config.format_filename if config.format_filename else chap_name
+            pdf_file = self.path / (filename + self.file_ext)
+
             if pdf_file.exists():
 
                 if self.replace:

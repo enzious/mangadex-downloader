@@ -63,6 +63,18 @@ class _Config:
             fmt.default_save_as_format,
             validate_format
         ],
+        "format_filename": [
+            "",
+            lambda x: x,
+        ],
+        "no_manga_folder": [
+            False,
+            validate_bool
+        ],
+        "no_chapter_folder": [
+            False,
+            validate_bool
+        ],
         "use_chapter_title": [
             False,
             validate_bool

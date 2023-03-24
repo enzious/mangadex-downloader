@@ -62,15 +62,17 @@ def validate_group_url(url):
     else:
         return "all"
 
-def create_directory(name, path=None):
+def create_directory(name, path=None, include_name=True):
     """Create directory with ability to sanitize name to prevent error"""
     base_path = Path(".")
 
     # User defined path
     if path:
         base_path /= path
-    
-    base_path /= sanitize_filename(name)
+
+    if include_name:
+        base_path /= sanitize_filename(name)
+
     base_path.mkdir(parents=True, exist_ok=True)
     return base_path
 

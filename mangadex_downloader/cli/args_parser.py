@@ -216,6 +216,22 @@ def get_args(argv):
         default=config.no_group_name
     )
     chap_group.add_argument(
+        '--no-manga-folder',
+        '-nmf',
+        action='store_true',
+        help='Do not use manga title as folder. ' \
+             'NOTE: This option is useless if used for anything but a single manga, and a path is recommended.',
+        default=config.no_manga_folder
+    )
+    chap_group.add_argument(
+        '--no-chapter-folder',
+        '-ncf',
+        action='store_true',
+        help='Do not use chapter title as folder. ' \
+             'NOTE: This option is useless if used for anything but a single chapter, and a path is recommended.',
+        default=config.no_chapter_folder
+    )
+    chap_group.add_argument(
         '--use-chapter-title',
         '-uct',
         action='store_true',
@@ -342,6 +358,12 @@ def get_args(argv):
         choices=formats.keys(),
         help='Select save as format, default to `raw`',
         default=config.save_as
+    )
+    save_as_group.add_argument(
+        '--format-filename',
+        '-fn',
+        help='Select filename of final format, defaults to chapter name',
+        default=config.format_filename
     )
 
     # Network related
